@@ -1,99 +1,537 @@
-<div class="container">
-    <h1>私のウェブサイトへようこそ</h1>
-    
-    <!-- プロフィール画像セクション -->
-    <div class="profile-section">
-        <img src="https://via.placeholder.com/150" alt="プロフィール画像" class="profile-image">
-        <h2>おかふじりんたろう</h2>
-        <p class="subtitle">職業や肩書きなど</p>
-    </div>
-    
-    <!-- 自己紹介セクション -->
-    <div class="about-section">
-        <h2>自己紹介</h2>
-        <div class="about-content">
-            <p>ここに簡単な自己紹介文を入れてください。あなたの生い立ち、興味・関心、目標などについて書くと読者があなたのことをより理解できます。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私のポートフォリオ</title>
+    <style>
+        /* 全体のスタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ヘッダー */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #fff;
+        }
+        
+        /* ナビゲーション */
+        nav {
+            background-color: #34495e;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        /* セクション共通 */
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+            margin: 1rem auto;
+        }
+        
+        /* 自己紹介 */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        /* スキル */
+        #skills {
+            background-color: #f9f9f9;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+        
+        /* プロジェクト */
+        #projects {
+            background-color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .tech-tag {
+            background-color: #3498db;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .project-link:hover {
+            background-color: #3498db;
+        }
+        
+        /* 経歴 */
+        #experience {
+            background-color: #f9f9f9;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid #3498db;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-item.right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        /* 連絡先 */
+        #contact {
+            background-color: white;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #3498db;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
             
-            <h3>経歴</h3>
-            <ul>
-                <li>○○年：○○大学卒業</li>
-                <li>○○年：○○会社に入社</li>
-                <li>○○年：○○プロジェクトに参加</li>
-            </ul>
+            nav li {
+                margin: 0.5rem 0;
+            }
             
-            <h3>趣味・特技</h3>
-            <ul>
-                <li>趣味1（例：読書、映画鑑賞など）</li>
-                <li>趣味2（例：旅行、料理など）</li>
-                <li>特技（例：語学、プログラミングなど）</li>
-            </ul>
+            .timeline::after {
+                left: 31px;
+            }
             
-            <h3>連絡先</h3>
-            <p>メール：example@example.com</p>
-            <p>SNS：Twitter @username / Instagram @username</p>
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-content">
+            <img src="/api/placeholder/150/150" alt="プロフィール画像" class="profile-img">
+            <h1>あなたの名前</h1>
+            <p>職業・専門分野</p>
         </div>
-    </div>
-</div>
-
-<style>
-    body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-    }
+    </header>
     
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+    <!-- ナビゲーション -->
+    <nav>
+        <ul>
+            <li><a href="#about">自己紹介</a></li>
+            <li><a href="#skills">スキル</a></li>
+            <li><a href="#projects">プロジェクト</a></li>
+            <li><a href="#experience">経歴</a></li>
+            <li><a href="#contact">連絡先</a></li>
+        </ul>
+    </nav>
     
-    h1, h2, h3 {
-        color: #2c3e50;
-    }
+    <!-- 自己紹介 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">自己紹介</h2>
+            <div class="about-content">
+                <p>
+                    ここにあなたの自己紹介文を入れてください。あなたの経歴、興味、目標などについて書きましょう。
+                    読者があなたのことを理解し、あなたの専門性や人柄が伝わるような内容にするといいでしょう。
+                </p>
+                <p>
+                    また、あなたがどのような価値観を持ち、どのような仕事に情熱を注いでいるかについても触れると良いでしょう。
+                    あなたの強みや、なぜその分野で働いているのかについても説明すると、読者との共感が生まれます。
+                </p>
+            </div>
+        </div>
+    </section>
     
-    h1 {
-        text-align: center;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #eee;
-    }
+    <!-- スキル -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">スキル</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-icon">📱</div>
+                    <h3>スキル1</h3>
+                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">💻</div>
+                    <h3>スキル2</h3>
+                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🎨</div>
+                    <h3>スキル3</h3>
+                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">📊</div>
+                    <h3>スキル4</h3>
+                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    .profile-section {
-        text-align: center;
-        margin: 30px 0;
-    }
+    <!-- プロジェクト -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">プロジェクト</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="プロジェクト1" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">プロジェクト1</h3>
+                        <p>このプロジェクトについての説明文をここに入れてください。どのような課題を解決したのか、どのような技術を使ったのかなど。</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">詳細を見る</a>
+                            <a href="#" class="project-link">ソースコード</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="プロジェクト2" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">プロジェクト2</h3>
+                        <p>このプロジェクトについての説明文をここに入れてください。どのような課題を解決したのか、どのような技術を使ったのかなど。</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">詳細を見る</a>
+                            <a href="#" class="project-link">ソースコード</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="プロジェクト3" class="project-img">
+                    <div class="project-info">
+                        <h3 class="project-title">プロジェクト3</h3>
+                        <p>このプロジェクトについての説明文をここに入れてください。どのような課題を解決したのか、どのような技術を使ったのかなど。</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">SCSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">詳細を見る</a>
+                            <a href="#" class="project-link">ソースコード</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid #3498db;
-    }
+    <!-- 経歴 -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">経歴</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>会社名または学校名</h3>
+                        <p class="timeline-date">2022 - 現在</p>
+                        <p>ここに職務内容や学習内容を記載します。どのような役割を担当したのか、どのようなプロジェクトに携わったのかなどを書きましょう。</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>会社名または学校名</h3>
+                        <p class="timeline-date">2020 - 2022</p>
+                        <p>ここに職務内容や学習内容を記載します。どのような役割を担当したのか、どのようなプロジェクトに携わったのかなどを書きましょう。</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>会社名または学校名</h3>
+                        <p class="timeline-date">2018 - 2020</p>
+                        <p>ここに職務内容や学習内容を記載します。どのような役割を担当したのか、どのようなプロジェクトに携わったのかなどを書きましょう。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    .subtitle {
-        color: #7f8c8d;
-        font-style: italic;
-    }
+    <!-- 連絡先 -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">連絡先</h2>
+            <div class="contact-info">
+                <p>お問い合わせやお仕事のご依頼は、以下の連絡先またはSNSからお気軽にご連絡ください。</p>
+                <p>メール: your.email@example.com</p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link">X</a>
+                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">GH</a>
+                <a href="#" class="social-link">LI</a>
+            </div>
+        </div>
+    </section>
     
-    .about-section {
-        margin: 30px 0;
-    }
-    
-    .about-content {
-        padding: 0 20px;
-    }
-    
-    ul {
-        padding-left: 20px;
-    }
-    
-    li {
-        margin-bottom: 5px;
-    }
-</style>
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2025 あなたの名前 - All Rights Reserved</p>
+    </footer>
+</body>
+</html>
