@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>私のポートフォリオ</title>
+    <title>おかふじりんたろう | ポートフォリオ</title>
     <style>
         /* 全体のスタイル */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
         }
         
         body {
             background-color: #f5f5f5;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         
         /* ヘッダー */
@@ -111,35 +111,11 @@
             align-items: center;
             text-align: center;
         }
-        
-        /* スキル */
-        #skills {
-            background-color: #f9f9f9;
-        }
-        
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-item {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #3498db;
+
+        .about-text {
+            max-width: 800px;
+            text-align: left;
+            margin: 0 auto;
         }
         
         /* プロジェクト */
@@ -149,7 +125,7 @@
         
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
         
@@ -217,70 +193,38 @@
             background-color: #3498db;
         }
         
-        /* 経歴 */
-        #experience {
-            background-color: #f9f9f9;
+        /* コンテンツリスト */
+        .content-list {
+            list-style: none;
+            margin-top: 1.5rem;
         }
         
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+        .content-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
         }
         
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #3498db;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
+        .content-item:last-child {
+            border-bottom: none;
         }
         
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
+        .content-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            border: 4px solid #3498db;
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
-        }
-        
-        .timeline-item.left {
-            left: 0;
-        }
-        
-        .timeline-item.right {
-            left: 50%;
-        }
-        
-        .timeline-item.right::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
+
+        .concept-section {
+            background-color: #f8f9fa;
+            padding: 2rem;
             border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
         }
         
-        .timeline-date {
-            color: #3498db;
-            font-weight: bold;
+        .concept-title {
+            font-size: 1.25rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
         }
         
         /* 連絡先 */
@@ -337,23 +281,8 @@
                 margin: 0.5rem 0;
             }
             
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item.right {
-                left: 0;
-            }
-            
-            .timeline-item.left::after,
-            .timeline-item.right::after {
-                left: 19px;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -362,9 +291,9 @@
     <!-- ヘッダー -->
     <header>
         <div class="header-content">
-            <img src="/api/placeholder/150/150" alt="プロフィール画像" class="profile-img">
-            <h1>あなたの名前</h1>
-            <p>職業・専門分野</p>
+            <img src="/api/placeholder/150/150" alt="おかふじりんたろう" class="profile-img">
+            <h1>おかふじりんたろう（岡藤凜太郎）</h1>
+            <p>クリエイター・メディア運営</p>
         </div>
     </header>
     
@@ -372,9 +301,7 @@
     <nav>
         <ul>
             <li><a href="#about">自己紹介</a></li>
-            <li><a href="#skills">スキル</a></li>
             <li><a href="#projects">プロジェクト</a></li>
-            <li><a href="#experience">経歴</a></li>
             <li><a href="#contact">連絡先</a></li>
         </ul>
     </nav>
@@ -384,42 +311,10 @@
         <div class="container">
             <h2 class="section-title">自己紹介</h2>
             <div class="about-content">
-                <p>
-                    ここにあなたの自己紹介文を入れてください。あなたの経歴、興味、目標などについて書きましょう。
-                    読者があなたのことを理解し、あなたの専門性や人柄が伝わるような内容にするといいでしょう。
-                </p>
-                <p>
-                    また、あなたがどのような価値観を持ち、どのような仕事に情熱を注いでいるかについても触れると良いでしょう。
-                    あなたの強みや、なぜその分野で働いているのかについても説明すると、読者との共感が生まれます。
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- スキル -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">スキル</h2>
-            <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-icon">📱</div>
-                    <h3>スキル1</h3>
-                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">💻</div>
-                    <h3>スキル2</h3>
-                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">🎨</div>
-                    <h3>スキル3</h3>
-                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">📊</div>
-                    <h3>スキル4</h3>
-                    <p>このスキルについての説明文をここに入れてください。あなたのレベルや経験年数なども書くと良いでしょう。</p>
+                <div class="about-text">
+                    <p>1997年7月生まれ。山口県宇部市出身。2017年にコンテンツ制作を主とする株式会社インターン設立。山口ケーブルビジョン『にんげんのGO！』のスタッフや出演者として活動しながら、下関市移住促進動画など、Webを中心に多くの動画、生配信番組を制作。</p>
+                    <p>2019年頃からラップ活動（MCベスト）を開始。また2019年にインディペンデントメディアとして、ユニークローカルメディア「凜」―RIN （ULMR）を開始。2020年の3月、NHK山口『話そう！山口のミライ』出演。2021年12月に、雑誌『ユニークローカルメディア「凜」―RIN 創刊号』を刊行。2022年からは音楽アルバムやMVも制作。</p>
+                    <p>将来的には、独立系のコンテンツスタジオとして、地方から面白い文化を作ることを目指す。</p>
                 </div>
             </div>
         </div>
@@ -429,83 +324,92 @@
     <section id="projects">
         <div class="container">
             <h2 class="section-title">プロジェクト</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="/api/placeholder/300/200" alt="プロジェクト1" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-title">プロジェクト1</h3>
-                        <p>このプロジェクトについての説明文をここに入れてください。どのような課題を解決したのか、どのような技術を使ったのかなど。</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">詳細を見る</a>
-                            <a href="#" class="project-link">ソースコード</a>
-                        </div>
+            
+            <!-- ULMR プロジェクト -->
+            <div class="project-card">
+                <div class="project-info">
+                    <h3 class="project-title">ユニークローカルメディア「凜」―RIN （ULMR）</h3>
+                    <p>ユニークローカルという独自のコンセプトで、政治から植物までジャンルを横断するメディア。雑誌や音楽やドキュメンタリーなど、あらゆる形式のコンテンツを提供しています。</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">最近制作したコンテンツ</h4>
+                    <ul class="content-list">
+                        <li class="content-item">
+                            <div class="content-date">2024年12月1日</div>
+                            <div>音楽と文学をめぐる断想──7つのコンテンツガイド【テキスト】</div>
+                        </li>
+                        <li class="content-item">
+                            <div class="content-date">2024年10月22日</div>
+                            <div>水ノ上窯のグルーブ / Mizunouegama's groove 【MV】</div>
+                        </li>
+                        <li class="content-item">
+                            <div class="content-date">2024年10月10日</div>
+                            <div>会社を辞めてたくさんの仕事で生きていく方法 【インタビュー】</div>
+                        </li>
+                        <li class="content-item">
+                            <div class="content-date">2025年02月27日</div>
+                            <div>Mass Appealって知ってる？面白い話をしよう ─ 平野賢正【インタビュー】</div>
+                        </li>
+                    </ul>
+                    
+                    <div class="concept-section">
+                        <h4 class="concept-title">｢ユニークローカル｣コンセプトについて</h4>
+                        <p>ユニーク、それは独特であること、普通ではない様子を表します。ローカル、ここでは東京に対する｢地方｣のような特定の物理空間を表す意味ではなく、ネットワークから切断された場所という意味で使っています。パソコンのローカルディスクみたいなイメージです。</p>
+                        <p>それぞれの現場で、業界の慣習から逸脱したりぼくたちの常識を問い直してくれるような面白い実践や視点を｢ユニークローカル｣と勝手に呼ぶことにしました。グローバル化やインターネットによって世界が均質化していく中で、各地、各現場のユニークローカルにスポットを当てます。</p>
+                        <p>ULMRに触発されて、柔軟な思考を持ち合わせるユニークでローカルな人がたくさん増え、世界がもっと面白くなることを願っています。</p>
                     </div>
-                </div>
-                <div class="project-card">
-                    <img src="/api/placeholder/300/200" alt="プロジェクト2" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-title">プロジェクト2</h3>
-                        <p>このプロジェクトについての説明文をここに入れてください。どのような課題を解決したのか、どのような技術を使ったのかなど。</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">詳細を見る</a>
-                            <a href="#" class="project-link">ソースコード</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="/api/placeholder/300/200" alt="プロジェクト3" class="project-img">
-                    <div class="project-info">
-                        <h3 class="project-title">プロジェクト3</h3>
-                        <p>このプロジェクトについての説明文をここに入れてください。どのような課題を解決したのか、どのような技術を使ったのかなど。</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">SCSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">詳細を見る</a>
-                            <a href="#" class="project-link">ソースコード</a>
-                        </div>
+                    
+                    <div class="concept-section">
+                        <h4 class="concept-title">今後の展望</h4>
+                        <p>ULMRの最終目標は、｢柔軟な思考を持ち合わせるユニークでローカルな人がたくさん増え、世界がもっと面白くなること｣です。動画や雑誌は、あくまでも最終目標のための手段に過ぎないので、アウトプットの形式にこだわることなく、コンテンツを制作していきます。</p>
+                        <p>また将来的には以下のような制作スタジオ（レーベル？）のようにしていきたいと思っています。</p>
+                        <ul style="padding-left: 1.5rem; margin: 1rem 0;">
+                            <li>現在の社会的評価とは関係なく、自身の審美眼を根拠にしてアクションや人に光を当てられるスタジオ。</li>
+                            <li>きちんとULMR自体に固定のお客さんがついていて、高クオリティな制作やそれなりの規模の流通ができるスタジオ。</li>
+                            <li>既存産業のプロセスに取り込まれることなく、インターネットに顕著なアテンションエコノミーに乗っかることもしない、第3の選択肢を提示できるインディペンデントなスタジオ。</li>
+                        </ul>
+                        <p>このような真っ当な小・中規模のスタジオを作ることができれば、ユニークでローカルな人たちが増えるのではないかと考えています。ULMR自体で面白いコンテンツを作りながら、面白い人たちの活躍を後押しできるような環境も整えていく。この両輪をうまく回しながら、じっくりと世界を面白くしていきます。</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- 経歴 -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">経歴</h2>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>会社名または学校名</h3>
-                        <p class="timeline-date">2022 - 現在</p>
-                        <p>ここに職務内容や学習内容を記載します。どのような役割を担当したのか、どのようなプロジェクトに携わったのかなどを書きましょう。</p>
+            
+            <!-- 宇部市のマニアックなニュース -->
+            <div class="project-card" style="margin-top: 2rem;">
+                <div class="project-info">
+                    <h3 class="project-title">宇部市のマニアックなニュース</h3>
+                    <p>この番組は、宇部市の歴史、地形、建築物などの情報がまとめてあるサイト「宇部マニアックス」の管理人、山本健二さんが、宇部市の気になるニュースについて語る番組です。聞き手は、おかふじりんたろうです。</p>
+                    <p>YouTubeや各種ポッドキャストで配信しています。</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Watch＆Listen</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">YouTube</span>
+                        <span class="tech-tag">ApplePodcast</span>
+                        <span class="tech-tag">Spotify</span>
+                        <span class="tech-tag">AmazonMusic</span>
+                        <span class="tech-tag">YouTube Music</span>
                     </div>
+                    
+                    <h4 style="margin-top: 1.5rem;">出演者</h4>
+                    <p><strong>山本健二（通称 宇部マニさん）</strong><br>
+                    1964年生まれ。宇部マニアックス管理人。大学以外で宇部から一度も外で暮らさず現在に至る。学校の先生を志していたが、教員採用試験に２度も失敗。この合間にも巡回家庭教師業を進めていたが、定職をもつよう求められて父親の勤める土木建築会社へ入社。現場の仕事を通じて道路や橋といった公共物がどのように造られていくかを身体で理解する。会社を退職後、市の仕事で収入を確保しながら元から好きだった記事制作と捨てきれなかった教育関連を統合して身の回りの風景を撮影し記事を書いて配信し始める。</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>おかふじりんたろう</strong><br>
+                    1997年7月生まれ。山口県宇部市出身。2017年にコンテンツ制作を主とする株式会社インターン設立。山口ケーブルビジョン『にんげんのGO！』のスタッフや出演者として活動しながら、下関市移住促進動画など、Webを中心に多くの動画、生配信番組を制作。</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">制作</h4>
+                    <p>株式会社インターン<br>
+                    <a href="https://www.onigiriboy.com" target="_blank" style="color: #3498db;">https://www.onigiriboy.com</a></p>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <h3>会社名または学校名</h3>
-                        <p class="timeline-date">2020 - 2022</p>
-                        <p>ここに職務内容や学習内容を記載します。どのような役割を担当したのか、どのようなプロジェクトに携わったのかなどを書きましょう。</p>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>会社名または学校名</h3>
-                        <p class="timeline-date">2018 - 2020</p>
-                        <p>ここに職務内容や学習内容を記載します。どのような役割を担当したのか、どのようなプロジェクトに携わったのかなどを書きましょう。</p>
+            </div>
+            
+            <!-- MCベスト -->
+            <div class="project-card" style="margin-top: 2rem;">
+                <div class="project-info">
+                    <h3 class="project-title">MCベスト</h3>
+                    <p>好きな「モノ」や「コト」を曲にする、そんなコンセプトで活動している3人組ラップユニット。2019年頃から活動開始し、音楽アルバムやMVを制作しています。</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">音楽</span>
+                        <span class="tech-tag">ラップ</span>
+                        <span class="tech-tag">MV制作</span>
                     </div>
                 </div>
             </div>
@@ -517,21 +421,21 @@
         <div class="container">
             <h2 class="section-title">連絡先</h2>
             <div class="contact-info">
-                <p>お問い合わせやお仕事のご依頼は、以下の連絡先またはSNSからお気軽にご連絡ください。</p>
-                <p>メール: your.email@example.com</p>
+                <p>お問い合わせやお仕事のご依頼は、以下の連絡先からお気軽にご連絡ください。</p>
+                <p style="margin-top: 1rem;">株式会社インターン<br>
+                <a href="https://www.onigiriboy.com" target="_blank" style="color: #3498db;">https://www.onigiriboy.com</a></p>
             </div>
             <div class="social-links">
-                <a href="#" class="social-link">X</a>
+                <a href="#" class="social-link">YT</a>
                 <a href="#" class="social-link">IG</a>
-                <a href="#" class="social-link">GH</a>
-                <a href="#" class="social-link">LI</a>
+                <a href="#" class="social-link">X</a>
             </div>
         </div>
     </section>
     
     <!-- フッター -->
     <footer>
-        <p>&copy; 2025 あなたの名前 - All Rights Reserved</p>
+        <p>&copy; 2025 おかふじりんたろう - All Rights Reserved</p>
     </footer>
 </body>
 </html>
