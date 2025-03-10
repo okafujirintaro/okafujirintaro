@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おかふじりんたろう | ポートフォリオ</title>
     <style>
-        /* 全体のスタイル */
         * {
             margin: 0;
             padding: 0;
@@ -14,37 +13,27 @@
         }
         
         body {
-            background-color: #f5f5f5;
+            background-color: #fafafa;
             color: #333;
-            line-height: 1.8;
+            line-height: 1.6;
         }
         
-        /* ヘッダー */
         header {
             background-color: #2c3e50;
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0 2rem;
             text-align: center;
         }
         
-        .header-content {
-            max-width: 1200px;
+        .container {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
         
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #fff;
-        }
-        
-        /* ナビゲーション */
         nav {
             background-color: #34495e;
+            padding: 0.75rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -54,97 +43,50 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
         }
         
         nav li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
         }
         
         nav a:hover {
             color: #3498db;
         }
         
-        /* セクション共通 */
         section {
-            padding: 4rem 2rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 3rem 0;
         }
         
         .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
             color: #2c3e50;
             position: relative;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: #3498db;
-            margin: 1rem auto;
-        }
-        
-        /* 自己紹介 */
-        #about {
-            background-color: white;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .about-text {
-            max-width: 800px;
-            text-align: left;
-            margin: 0 auto;
-        }
-        
-        /* プロジェクト */
-        #projects {
-            background-color: white;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #fff;
         }
         
         .project-card {
-            background-color: #f9f9f9;
+            background-color: white;
             border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
         }
         
         .project-info {
@@ -152,109 +94,57 @@
         }
         
         .project-title {
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
             color: #2c3e50;
         }
         
-        .project-tech {
+        .tag-list {
             display: flex;
             flex-wrap: wrap;
-            margin: 1rem 0;
+            margin: 0.75rem 0;
+            gap: 0.5rem;
         }
         
-        .tech-tag {
-            background-color: #3498db;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 20px;
+        .tag {
+            background-color: #edf2f7;
+            color: #4a5568;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
             font-size: 0.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
         }
         
-        .project-links {
+        .content-list {
+            list-style: none;
+        }
+        
+        .content-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            align-items: baseline;
         }
         
-        .project-link {
+        .content-date {
+            min-width: 100px;
+            color: #718096;
+            font-size: 0.85rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
             display: inline-block;
             padding: 0.5rem 1rem;
             background-color: #2c3e50;
             color: white;
             text-decoration: none;
             border-radius: 3px;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-        }
-        
-        .project-link:hover {
-            background-color: #3498db;
-        }
-        
-        /* コンテンツリスト */
-        .content-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-        
-        .content-item {
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .content-item:last-child {
-            border-bottom: none;
-        }
-        
-        .content-date {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .concept-section {
-            background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 5px;
-            margin: 2rem 0;
-        }
-        
-        .concept-title {
-            font-size: 1.25rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        
-        /* 連絡先 */
-        #contact {
-            background-color: white;
-            text-align: center;
-        }
-        
-        .contact-info {
-            margin-bottom: 2rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .social-link {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            border-radius: 50%;
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.2rem;
             transition: background-color 0.3s;
         }
         
@@ -262,178 +152,132 @@
             background-color: #3498db;
         }
         
-        /* フッター */
         footer {
             background-color: #2c3e50;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
         }
         
-        /* レスポンシブデザイン */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 align-items: center;
+                padding: 0.5rem 0;
             }
             
             nav li {
                 margin: 0.5rem 0;
             }
             
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .content-item {
+                flex-direction: column;
+            }
+            
+            .content-date {
+                margin-bottom: 0.25rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ヘッダー -->
     <header>
-        <div class="header-content">
-            <img src="/api/placeholder/150/150" alt="おかふじりんたろう" class="profile-img">
-            <h1>おかふじりんたろう（岡藤凜太郎）</h1>
+        <div class="container">
+            <img src="/api/placeholder/120/120" alt="おかふじりんたろう" class="profile-img">
+            <h1>おかふじりんたろう</h1>
             <p>クリエイター・メディア運営</p>
         </div>
     </header>
     
-    <!-- ナビゲーション -->
     <nav>
         <ul>
-            <li><a href="#about">自己紹介</a></li>
+            <li><a href="#about">プロフィール</a></li>
             <li><a href="#projects">プロジェクト</a></li>
             <li><a href="#contact">連絡先</a></li>
         </ul>
     </nav>
     
-    <!-- 自己紹介 -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">自己紹介</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>1997年7月生まれ。山口県宇部市出身。2017年にコンテンツ制作を主とする株式会社インターン設立。山口ケーブルビジョン『にんげんのGO！』のスタッフや出演者として活動しながら、下関市移住促進動画など、Webを中心に多くの動画、生配信番組を制作。</p>
-                    <p>2019年頃からラップ活動（MCベスト）を開始。また2019年にインディペンデントメディアとして、ユニークローカルメディア「凜」―RIN （ULMR）を開始。2020年の3月、NHK山口『話そう！山口のミライ』出演。2021年12月に、雑誌『ユニークローカルメディア「凜」―RIN 創刊号』を刊行。2022年からは音楽アルバムやMVも制作。</p>
-                    <p>将来的には、独立系のコンテンツスタジオとして、地方から面白い文化を作ることを目指す。</p>
-                </div>
-            </div>
+            <h2 class="section-title">プロフィール</h2>
+            <p>1997年7月生まれ、山口県宇部市出身。株式会社インターン代表。2017年から映像制作、2019年からメディア「ULMR」運営とラップ活動（MCベスト）を開始。地方から面白い文化を発信する独立系コンテンツスタジオを目指している。</p>
         </div>
     </section>
     
-    <!-- プロジェクト -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">プロジェクト</h2>
             
-            <!-- ULMR プロジェクト -->
             <div class="project-card">
                 <div class="project-info">
-                    <h3 class="project-title">ユニークローカルメディア「凜」―RIN （ULMR）</h3>
-                    <p>ユニークローカルという独自のコンセプトで、政治から植物までジャンルを横断するメディア。雑誌や音楽やドキュメンタリーなど、あらゆる形式のコンテンツを提供しています。</p>
+                    <h3 class="project-title">ユニークローカルメディア「凜」（ULMR）</h3>
+                    <p>政治から植物までジャンルを横断する独自コンセプトのメディア。雑誌、音楽、ドキュメンタリーなど多様な形式でコンテンツを制作。</p>
+                    <div class="tag-list">
+                        <span class="tag">メディア運営</span>
+                        <span class="tag">記事制作</span>
+                        <span class="tag">インタビュー</span>
+                    </div>
                     
-                    <h4 style="margin-top: 1.5rem;">最近制作したコンテンツ</h4>
+                    <h4 style="margin-top: 1rem; font-size: 1rem;">最近の制作物</h4>
                     <ul class="content-list">
                         <li class="content-item">
-                            <div class="content-date">2024年12月1日</div>
-                            <div>音楽と文学をめぐる断想──7つのコンテンツガイド【テキスト】</div>
+                            <div class="content-date">2024.12.01</div>
+                            <div>音楽と文学をめぐる断想──7つのコンテンツガイド</div>
                         </li>
                         <li class="content-item">
-                            <div class="content-date">2024年10月22日</div>
-                            <div>水ノ上窯のグルーブ / Mizunouegama's groove 【MV】</div>
+                            <div class="content-date">2024.10.22</div>
+                            <div>水ノ上窯のグルーブ / Mizunouegama's groove【MV】</div>
                         </li>
                         <li class="content-item">
-                            <div class="content-date">2024年10月10日</div>
-                            <div>会社を辞めてたくさんの仕事で生きていく方法 【インタビュー】</div>
-                        </li>
-                        <li class="content-item">
-                            <div class="content-date">2025年02月27日</div>
-                            <div>Mass Appealって知ってる？面白い話をしよう ─ 平野賢正【インタビュー】</div>
+                            <div class="content-date">2024.10.10</div>
+                            <div>会社を辞めてたくさんの仕事で生きていく方法【インタビュー】</div>
                         </li>
                     </ul>
-                    
-                    <div class="concept-section">
-                        <h4 class="concept-title">｢ユニークローカル｣コンセプトについて</h4>
-                        <p>ユニーク、それは独特であること、普通ではない様子を表します。ローカル、ここでは東京に対する｢地方｣のような特定の物理空間を表す意味ではなく、ネットワークから切断された場所という意味で使っています。パソコンのローカルディスクみたいなイメージです。</p>
-                        <p>それぞれの現場で、業界の慣習から逸脱したりぼくたちの常識を問い直してくれるような面白い実践や視点を｢ユニークローカル｣と勝手に呼ぶことにしました。グローバル化やインターネットによって世界が均質化していく中で、各地、各現場のユニークローカルにスポットを当てます。</p>
-                        <p>ULMRに触発されて、柔軟な思考を持ち合わせるユニークでローカルな人がたくさん増え、世界がもっと面白くなることを願っています。</p>
-                    </div>
-                    
-                    <div class="concept-section">
-                        <h4 class="concept-title">今後の展望</h4>
-                        <p>ULMRの最終目標は、｢柔軟な思考を持ち合わせるユニークでローカルな人がたくさん増え、世界がもっと面白くなること｣です。動画や雑誌は、あくまでも最終目標のための手段に過ぎないので、アウトプットの形式にこだわることなく、コンテンツを制作していきます。</p>
-                        <p>また将来的には以下のような制作スタジオ（レーベル？）のようにしていきたいと思っています。</p>
-                        <ul style="padding-left: 1.5rem; margin: 1rem 0;">
-                            <li>現在の社会的評価とは関係なく、自身の審美眼を根拠にしてアクションや人に光を当てられるスタジオ。</li>
-                            <li>きちんとULMR自体に固定のお客さんがついていて、高クオリティな制作やそれなりの規模の流通ができるスタジオ。</li>
-                            <li>既存産業のプロセスに取り込まれることなく、インターネットに顕著なアテンションエコノミーに乗っかることもしない、第3の選択肢を提示できるインディペンデントなスタジオ。</li>
-                        </ul>
-                        <p>このような真っ当な小・中規模のスタジオを作ることができれば、ユニークでローカルな人たちが増えるのではないかと考えています。ULMR自体で面白いコンテンツを作りながら、面白い人たちの活躍を後押しできるような環境も整えていく。この両輪をうまく回しながら、じっくりと世界を面白くしていきます。</p>
-                    </div>
                 </div>
             </div>
             
-            <!-- 宇部市のマニアックなニュース -->
-            <div class="project-card" style="margin-top: 2rem;">
+            <div class="project-card">
                 <div class="project-info">
                     <h3 class="project-title">宇部市のマニアックなニュース</h3>
-                    <p>この番組は、宇部市の歴史、地形、建築物などの情報がまとめてあるサイト「宇部マニアックス」の管理人、山本健二さんが、宇部市の気になるニュースについて語る番組です。聞き手は、おかふじりんたろうです。</p>
-                    <p>YouTubeや各種ポッドキャストで配信しています。</p>
-                    
-                    <h4 style="margin-top: 1.5rem;">Watch＆Listen</h4>
-                    <div class="project-tech">
-                        <span class="tech-tag">YouTube</span>
-                        <span class="tech-tag">ApplePodcast</span>
-                        <span class="tech-tag">Spotify</span>
-                        <span class="tech-tag">AmazonMusic</span>
-                        <span class="tech-tag">YouTube Music</span>
+                    <p>宇部市の歴史や地形に詳しい「宇部マニアックス」山本健二さんとの対談番組。YouTubeや各種ポッドキャストで配信中。</p>
+                    <div class="tag-list">
+                        <span class="tag">ポッドキャスト</span>
+                        <span class="tag">YouTube</span>
+                        <span class="tag">ローカルメディア</span>
                     </div>
-                    
-                    <h4 style="margin-top: 1.5rem;">出演者</h4>
-                    <p><strong>山本健二（通称 宇部マニさん）</strong><br>
-                    1964年生まれ。宇部マニアックス管理人。大学以外で宇部から一度も外で暮らさず現在に至る。学校の先生を志していたが、教員採用試験に２度も失敗。この合間にも巡回家庭教師業を進めていたが、定職をもつよう求められて父親の勤める土木建築会社へ入社。現場の仕事を通じて道路や橋といった公共物がどのように造られていくかを身体で理解する。会社を退職後、市の仕事で収入を確保しながら元から好きだった記事制作と捨てきれなかった教育関連を統合して身の回りの風景を撮影し記事を書いて配信し始める。</p>
-                    
-                    <p style="margin-top: 1rem;"><strong>おかふじりんたろう</strong><br>
-                    1997年7月生まれ。山口県宇部市出身。2017年にコンテンツ制作を主とする株式会社インターン設立。山口ケーブルビジョン『にんげんのGO！』のスタッフや出演者として活動しながら、下関市移住促進動画など、Webを中心に多くの動画、生配信番組を制作。</p>
-                    
-                    <h4 style="margin-top: 1.5rem;">制作</h4>
-                    <p>株式会社インターン<br>
-                    <a href="https://www.onigiriboy.com" target="_blank" style="color: #3498db;">https://www.onigiriboy.com</a></p>
                 </div>
             </div>
             
-            <!-- MCベスト -->
-            <div class="project-card" style="margin-top: 2rem;">
+            <div class="project-card">
                 <div class="project-info">
                     <h3 class="project-title">MCベスト</h3>
-                    <p>好きな「モノ」や「コト」を曲にする、そんなコンセプトで活動している3人組ラップユニット。2019年頃から活動開始し、音楽アルバムやMVを制作しています。</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">音楽</span>
-                        <span class="tech-tag">ラップ</span>
-                        <span class="tech-tag">MV制作</span>
+                    <p>好きな「モノ」や「コト」を曲にする3人組ラップユニット。音楽アルバムやMVを制作しています。</p>
+                    <div class="tag-list">
+                        <span class="tag">音楽</span>
+                        <span class="tag">ラップ</span>
+                        <span class="tag">MV制作</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- 連絡先 -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">連絡先</h2>
-            <div class="contact-info">
-                <p>お問い合わせやお仕事のご依頼は、以下の連絡先からお気軽にご連絡ください。</p>
-                <p style="margin-top: 1rem;">株式会社インターン<br>
-                <a href="https://www.onigiriboy.com" target="_blank" style="color: #3498db;">https://www.onigiriboy.com</a></p>
-            </div>
+            <p>お問い合わせやお仕事のご依頼は下記までお気軽にご連絡ください。</p>
+            <p style="margin-top: 0.5rem;">株式会社インターン：<a href="https://www.onigiriboy.com" style="color: #3498db;">https://www.onigiriboy.com</a></p>
+            
             <div class="social-links">
-                <a href="#" class="social-link">YT</a>
-                <a href="#" class="social-link">IG</a>
+                <a href="#" class="social-link">YouTube</a>
+                <a href="#" class="social-link">Instagram</a>
                 <a href="#" class="social-link">X</a>
             </div>
         </div>
     </section>
     
-    <!-- フッター -->
     <footer>
         <p>&copy; 2025 おかふじりんたろう - All Rights Reserved</p>
     </footer>
